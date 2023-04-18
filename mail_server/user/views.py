@@ -16,5 +16,8 @@ def create_new_user(request):
   return JsonResponse(serializer.errors, status=400)
 
 @csrf_exempt
-def user_list(request):
-  return JsonResponse({'status': 'GET success'})
+def users_list(request):
+  data = User.objects.all()
+  serialized_data = UserModelSerializer(data, many=True).data
+
+  return JsonResponse(serialized_data, safe=False)
