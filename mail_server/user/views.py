@@ -7,13 +7,6 @@ from .models import User
 from .serializers import UserModelSerializer
 
 # Create your views here.
-@api_view(['POST'])
-def create_new_user(request):
-  serializer = UserModelSerializer(data = request.data)
-  if serializer.is_valid():
-    serializer.save()
-    return JsonResponse(serializer.data, status=201)
-  return JsonResponse(serializer.errors, status=400)
 
 @csrf_exempt
 def users_list(request):
@@ -21,3 +14,11 @@ def users_list(request):
   serialized_data = UserModelSerializer(data, many=True).data
 
   return JsonResponse(serialized_data, safe=False)
+
+@api_view(['POST'])
+def create_new_user(request):
+  serializer = UserModelSerializer(data = request.data)
+  if serializer.is_valid():
+    serializer.save()
+    return JsonResponse(serializer.data, status=201)
+  return JsonResponse(serializer.errors, status=400)
