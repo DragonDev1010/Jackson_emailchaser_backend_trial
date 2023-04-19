@@ -7,5 +7,3 @@ class ConnectedMailModelSerializer(serializers.ModelSerializer):
         model = ConnectedMail
         table_name = 'connected_mail'
         fields = '__all__'
-    def create():
-        return 1
