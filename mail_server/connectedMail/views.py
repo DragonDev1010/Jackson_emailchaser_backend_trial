@@ -15,7 +15,7 @@ def show_list(request):
 @api_view(['POST'])
 def create_new_connected_mail(request):
     user_id = request.POST.get('user_id')
-    mail = request.POST.get('mail')
+    mail = request.user.email
 
     user = User.objects.get(id = user_id)
 

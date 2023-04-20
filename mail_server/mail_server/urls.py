@@ -16,9 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from .views import login_redirect
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('login_redirect', login_redirect, name='login_redirect'),
     path('accounts/', include('allauth.urls')),
     path('user/', include('user.urls')),
     path('connected-mail/', include('connectedMail.urls')),
